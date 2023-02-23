@@ -3,19 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Process\Pool;
+use Laravel\Pennant\Feature;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// login once without storing sessions
+auth()->onceUsingId(2);
 
 Route::get('/', function () {
+
+    // This feature says that activate this feature for the current scope.
+    // In our case the scope is current user.
+    Feature::activate('newdesign');
+
     return view('welcome');
 });
 
